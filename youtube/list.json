@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "request": {
+        "url": "https://www.googleapis.com/youtube/v3/search",
+        "method": "GET",
+        "authorization": {
+            "type": "QueryParam",
+            "keyParam": "key"
+        },
+        "params": {
+            "q": true,
+            "part": true,
+            "type": false,
+            "maxResults": false,
+            "pageToken":false
+        },
+        "pagination":{
+            "type":"ContinuationToken",
+            "count_key":"maxResults",
+            "cursor_id":"nextPageToken",
+            "cursor_key":"pageToken",
+            "items_key":"items",
+            "max_count": 50
+        }
+    },
+    "response": {
+        "ctype": "application/json",
+        "tablePath": "$",
+        "schema": {
+            "kind":{
+                "target": "$.kind",
+                "type": "string"
+            },
+            "pageInfo":{
+                "target": "$.pageInfo",
+                "type": "object"
+            },
+            "prevPageToken":{
+                "target": "$.prevPageToken",
+                "type": "string"
+            },
+            "nextPageToken":{
+                "target": "$.nextPageToken",
+                "type": "string"
+            },
+            "items":{
+                "target": "$.items",
+                "type": "list"
+            }
+        },
+        "orient": "records"
+    }
+}
